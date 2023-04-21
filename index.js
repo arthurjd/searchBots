@@ -22,3 +22,17 @@ const fs = require('fs');
 
     await browser.close();
 })();
+
+
+
+
+/*
+
+class="sh-pr__product-results-grid sh-pr__product-results" = Bloco Geral
+class="sh-dgr__gr-auto sh-dgr__grid-result" = Bloco produto com padding
+class="i0X6df" = Bloco de produto
+class="a8Pemb" = Preço
+class="aULzUe" = Loja
+class="shntl" = Link Compra
+
+*/
