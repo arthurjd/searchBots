@@ -5,13 +5,15 @@ const fs = require('fs');
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  const eans = fs.readFileSync('lista-eans5.txt').toString().split('\r\n').filter(Boolean);
+  const eans = fs.readFileSync('lista-eans6.txt').toString().split('\r\n').filter(Boolean);
 
   const result = [];
 
   for (let ean of eans) {
     const url = `https://www.google.com/search?tbm=shop&hl=pt-BR&psb=1&ved=2ahUKEwiOkbqJwL7-AhVCDdQKHbl6DqUQu-kFegQIABAL&q=${ean}`;
     await page.goto(url);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     const itemPrice = await page.$$('.a8Pemb');
     const itemStore = await page.$$('.aULzUe');
@@ -63,9 +65,9 @@ const fs = require('fs');
 
   await browser.close();
 
-  // Escreve o objeto no arquivo "prices5.json"
-  fs.writeFile('prices5.json', JSON.stringify(result, null, 2), (err) => {
+  // Escreve o objeto no arquivo "prices6.json"
+  fs.writeFile('prices6.json', JSON.stringify(result, null, 2), (err) => {
     if (err) throw err;
-    console.log('Dados escritos no arquivo "prices5.json"');
+    console.log('Dados escritos no arquivo "prices6.json"');
 });
 })();
