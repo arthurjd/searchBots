@@ -22,10 +22,11 @@ const fs = require('fs');
     const linkList = [];
 
     for (let element of itemPrice) {
-      const text = await element.getProperty('textContent');
-      const value = await text.jsonValue();
-      priceList.push(parseFloat(value.replace(/[^0-9,.-]+/g, '')));
-    }
+        const text = await element.getProperty('textContent');
+        const value = await text.jsonValue();
+        const priceString = value.replace(/[^0-9,-]+/g, '').replace(',', '.');
+        priceList.push(parseFloat(priceString));
+      }      
 
     for (let element of itemStore) {
       const text = await element.getProperty('textContent');
