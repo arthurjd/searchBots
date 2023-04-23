@@ -14,7 +14,7 @@ const fs = require('fs');
     await page.goto(url);
 
     const itemPrice = await page.$$('.a8Pemb');
-    const itemStore = await page.$$('div.aULzUe');
+    const itemStore = await page.$$('.aULzUe');
     const itemLink = await page.$$('.Lq5OHe');
 
     const priceList = [];
@@ -30,7 +30,7 @@ const fs = require('fs');
     for (let element of itemStore) {
       const text = await element.getProperty('textContent');
       const value = await text.jsonValue();
-      storeList.push(value);
+      storeList.push(value.replace('.aULzUe{letter-spacing:0.2px;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#295397;line-height:22px;font-family:Roboto,Arial,Sans-Serif}.aULzUe::after{content:\"\";height:48px;left:0;position:absolute;top:calc(50% - 24px);width:100%}', ''));
     }
 
     for (let element of itemLink) {
