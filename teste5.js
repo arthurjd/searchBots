@@ -5,16 +5,16 @@ const fs = require('fs');
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  const eans = fs.readFileSync('lista-eans.txt').toString().split('\n').filter(Boolean);
+  const eans = fs.readFileSync('lista-eans.txt').toString().split('\r\n').filter(Boolean);
 
   const result = [];
 
   for (let ean of eans) {
-    const url = `https://www.google.com/search?q=${ean}&newwindow=1&hl=pt-BR&tbm=shop&sxsrf=APwXEdcnrru9VlhswbiFe_5RHqr-5JSPVQ%3A1682023927944&psb=1&ei=96VBZIyHOa6f5OUPoPKK6Aw&oq=&gs_lcp=Cgtwcm9kdWN0cy1jYxABGAEyBwgjEOoCECcyBwgjEOoCECcyBwgjEOoCECcyBwgjEOoCECcyBwgjEOoCECcyCwiuARDKAxDqAhAnMgsIrgEQygMQ6gIQJ1AAWABg2gtoAXAAeACAAQCIAQCSAQCYAQCgAQGwAQzAAQE&sclient=products-cc`;
+    const url = `https://www.google.com/search?tbm=shop&hl=pt-BR&psb=1&ved=2ahUKEwiOkbqJwL7-AhVCDdQKHbl6DqUQu-kFegQIABAL&q=${ean}`;
     await page.goto(url);
 
     const itemPrice = await page.$$('.a8Pemb');
-    const itemStore = await page.$$('.IuHnof');
+    const itemStore = await page.$$('div.aULzUe');
     const itemLink = await page.$$('.Lq5OHe');
 
     const priceList = [];
