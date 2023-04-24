@@ -20,13 +20,13 @@ const fs = require('fs');
     const priceList = [];
     const storeList = [];
     const linkList = [];
-    
+
     for (let element of itemPrice) {
-        const text = await element.getProperty('textContent');
-        const value = await text.jsonValue();
-        const priceString = value.replace(/[^0-9,-]+/g, '').replace(',', '.');
-        priceList.push(parseFloat(priceString));
-      }      
+      const text = await element.getProperty('textContent');
+      const value = await text.jsonValue();
+      const priceString = value.replace(/[^0-9,-]+/g, '').replace(',', '.');
+      priceList.push(parseFloat(priceString));
+    }
 
     for (let element of itemStore) {
       const text = await element.getProperty('textContent');
@@ -47,19 +47,19 @@ const fs = require('fs');
     const [minStore, minLink] = [storeList, linkList].map((list) =>
       list[priceList.indexOf(minPrice)]
 
-      );
-      
-      // Cria um objeto com as informações
-      const data = {
-        ean,
-        url,
-        price: minPrice,
-        store: minStore,
-        link: minLink
-      };
-      
-      result.push(data);
-    }
+    );
+
+    // Cria um objeto com as informações
+    const data = {
+      ean,
+      url,
+      price: minPrice,
+      store: minStore,
+      link: minLink
+    };
+
+    result.push(data);
+  }
 
   await browser.close();
 
@@ -67,5 +67,5 @@ const fs = require('fs');
   fs.writeFile('prices5.json', JSON.stringify(result, null, 2), (err) => {
     if (err) throw err;
     console.log('Dados escritos no arquivo "prices5.json"');
-});
+  });
 })();
