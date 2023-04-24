@@ -5,7 +5,7 @@ const fs = require('fs');
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
-  const eans = fs.readFileSync('lista-eans5.txt').toString().split('\r\n').filter(Boolean);
+  const eans = fs.readFileSync('PrecoGoogle.txt').toString().split('\r\n').filter(Boolean);
 
   const result = [];
 
@@ -31,7 +31,7 @@ const fs = require('fs');
     for (let element of itemStore) {
       const text = await element.getProperty('textContent');
       const value = await text.jsonValue();
-      storeList.push(value.replace('.aULzUe{letter-spacing:0.2px;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#295397;line-height:22px;font-family:Roboto,Arial,Sans-Serif}.aULzUe::after{content:\"\";height:48px;left:0;position:absolute;top:calc(50% - 24px);width:100%}', ''));
+      storeList.push(value.replace('.aULzUe{letter-spacing:0.2px;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#295397;line-height:22px;font-family:Roboto,Arial,Sans-Serif}.aULzUe::after{content:\"\";height:48px;left:0;position:absolute;top:calc(50% - 24px);width:100%}', '').replace('.aULzUe{letter-spacing:0.2px;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#1a73e8;line-height:22px;font-family:Roboto,Arial,Sans-Serif}.aULzUe::after{content:"";height:48px;left:0;position:absolute;top:calc(50% - 24px);width:100%}', ''));
     }
 
     for (let element of itemLink) {
@@ -63,9 +63,9 @@ const fs = require('fs');
 
   await browser.close();
 
-  // Escreve o objeto no arquivo "prices5.json"
-  fs.writeFile('prices5.json', JSON.stringify(result, null, 2), (err) => {
+  // Escreve o objeto no arquivo "PrecoGoogle.json"
+  fs.writeFile('PrecoGoogle.json', JSON.stringify(result, null, 2), (err) => {
     if (err) throw err;
-    console.log('Dados escritos no arquivo "prices5.json"');
+    console.log('Dados escritos no arquivo "PrecoGoogle.json"');
   });
 })();

@@ -1,0 +1,43 @@
+[
+  {
+    "ASIN": "B079C6FSSF",
+    "url": "https://www.amazon.com.br/dp/B079C6FSSF",
+    "price": "399,",
+    "availability": "Indisponível"
+  },
+  {
+    "ASIN": "B07PWYHRCK",
+    "url": "https://www.amazon.com.br/dp/B07PWYHRCK",
+    "price": "239,",
+    "store": "ZACAZA-SP",
+    "availability": "Disponível"
+  },
+  {
+    "ASIN": "B07K6SVJGH",
+    "url": "https://www.amazon.com.br/dp/B07K6SVJGH",
+    "price": "272,",
+    "store": "ZACAZA-ES",
+    "availability": "Disponível"
+  },
+  {
+    "ASIN": "B076QT1Z8P",
+    "url": "https://www.amazon.com.br/dp/B076QT1Z8P",
+    "price": "119,",
+    "store": "Amazon",
+    "availability": "Disponível"
+  },
+  {
+    "ASIN": "B01MQY26RG",
+    "url": "https://www.amazon.com.br/dp/B01MQY26RG",
+    "price": "207,",
+    "store": "Amazon",
+    "availability": "Disponível"
+  },
+  {
+    "ASIN": "B076JL8YZP",
+    "url": "https://www.amazon.com.br/dp/B076JL8YZP",
+    "price": "149,",
+    "store": "Amazon",
+    "availability": "Disponível"
+  }
+]
