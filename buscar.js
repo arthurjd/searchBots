@@ -1,11 +1,11 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-(async () => {
+async function obterDadosAmazon() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    const ASINs = fs.readFileSync('PrecoAmazon.txt').toString().split('\r\n').filter(Boolean);
+    const ASINs = fs.readFileSync('input-data-search/PrecoAmazon.txt').toString().split('\r\n').filter(Boolean);
 
     const result = [];
 
@@ -63,24 +63,20 @@ const fs = require('fs');
     await browser.close();
 
     // Escreve o objeto no arquivo "PrecoAmazon.json"
-    fs.writeFile('PrecoAmazon.json', JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile('json/PrecoAmazon.json', JSON.stringify(result, null, 2), (err) => {
         if (err) throw err;
         console.log('Dados escritos no arquivo "PrecoAmazon.json"');
     });
-})();
+}
 
 
 
 
-
-
-
-
-(async () => {
+async function obterDadosGoogle() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    const eans = fs.readFileSync('PrecoGoogle.txt').toString().split('\r\n').filter(Boolean);
+    const eans = fs.readFileSync('input-data-search/PrecoGoogle.txt').toString().split('\r\n').filter(Boolean);
 
     const result = [];
 
@@ -143,8 +139,22 @@ const fs = require('fs');
     await browser.close();
 
     // Escreve o objeto no arquivo "PrecoGoogle.json"
-    fs.writeFile('PrecoGoogle.json', JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile('json/PrecoGoogle.json', JSON.stringify(result, null, 2), (err) => {
         if (err) throw err;
         console.log('Dados escritos no arquivo "PrecoGoogle.json"');
     });
-})();
+}
+
+
+
+async function principal() {
+    const resultadoAmazon = await obterDadosAmazon();
+    const resultadoGoogle = await obterDadosGoogle();
+}
+
+
+principal().then(() => {
+    console.log('Processo concluído.');
+}).catch((erro) => {
+    console.error('Ocorreu um erro:', erro);
+});
