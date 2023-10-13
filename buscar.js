@@ -79,7 +79,7 @@ async function obterDadosMercadoLivre() {
 
     for (let index = 0; index < MLBs.length; index++) {
         const MLB = MLBs[index];
-        const url = `https://produto.mercadolivre.com.br/${MLB}`;
+        const url = `https://www.mercadolivre.com.br/p/${MLB}`;
         await page.goto(url);
 
         const itemPrice = await page.$$('.ui-pdp-price__second-line .andes-money-amount__fraction');
