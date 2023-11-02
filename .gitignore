@@ -1,1 +1,6 @@
+config.js
 node_modules
+maps.json
+PrecoAmazon.json
+PrecoGoogle.json
+PrecoMercadoLivre.json

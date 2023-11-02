@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 async function obterDadosReceita() {
-    const CNPJs = fs.readFileSync('receita/cnpjlist.txt').toString().split('\r\n').filter(Boolean);
+    const CNPJs = fs.readFileSync('all-txt/cnpjlist.txt').toString().split('\r\n').filter(Boolean);
     const requestsPerMinute = 3;
     const delayBetweenRequests = 60 * 1000 / requestsPerMinute; // 60 segundos divididos pelo número de requisições por minuto
 

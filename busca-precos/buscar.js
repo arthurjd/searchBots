@@ -5,7 +5,7 @@ async function obterDadosAmazon() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    const ASINs = fs.readFileSync('input-data-search/PrecoAmazon.txt').toString().split('\r\n').filter(Boolean);
+    const ASINs = fs.readFileSync('all-txt/PrecoAmazon.txt').toString().split('\r\n').filter(Boolean);
 
     const result = [];
 
@@ -63,7 +63,7 @@ async function obterDadosAmazon() {
     await browser.close();
 
     // Escreve o objeto no arquivo "PrecoAmazon.json"
-    fs.writeFile('json/PrecoAmazon.json', JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile('answer-json/PrecoAmazon.json', JSON.stringify(result, null, 2), (err) => {
         if (err) throw err;
         console.log('Dados escritos no arquivo "PrecoAmazon.json"');
     });
@@ -73,7 +73,7 @@ async function obterDadosMercadoLivre() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    const MLBs = fs.readFileSync('input-data-search/PrecoMercadoLivre.txt').toString().split('\r\n').filter(Boolean);
+    const MLBs = fs.readFileSync('all-txt/PrecoMercadoLivre.txt').toString().split('\r\n').filter(Boolean);
 
     const result = [];
 
@@ -117,7 +117,7 @@ async function obterDadosMercadoLivre() {
     await browser.close();
 
     // Escreve o objeto no arquivo "PrecoMercadoLivre"
-    fs.writeFile('json/PrecoMercadoLivre.json', JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile('answer-json/PrecoMercadoLivre.json', JSON.stringify(result, null, 2), (err) => {
         if (err) throw err;
         console.log('Dados escritos no arquivo "PrecoMercadoLivre"');
     });
@@ -127,7 +127,7 @@ async function obterDadosGoogle() {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    const eans = fs.readFileSync('input-data-search/PrecoGoogle.txt').toString().split('\r\n').filter(Boolean);
+    const eans = fs.readFileSync('all-txt/PrecoGoogle.txt').toString().split('\r\n').filter(Boolean);
 
     const result = [];
 
@@ -190,7 +190,7 @@ async function obterDadosGoogle() {
     await browser.close();
 
     // Escreve o objeto no arquivo "PrecoGoogle.json"
-    fs.writeFile('json/PrecoGoogle.json', JSON.stringify(result, null, 2), (err) => {
+    fs.writeFile('answer-json/PrecoGoogle.json', JSON.stringify(result, null, 2), (err) => {
         if (err) throw err;
         console.log('Dados escritos no arquivo "PrecoGoogle.json"');
     });
